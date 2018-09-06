@@ -12,7 +12,7 @@ import {Redirect} from "react-router-dom";
 
 window.onpopstate = function(event) {
 
-  
+
 
 };
 
@@ -38,7 +38,7 @@ componentDidUpdate(){
   if(this.props.auth){
   this.props.tabledata(this.props.auth);
 
-  this.props.history.push('/user_in')
+  this.props.history.push('/page')
 
 
 

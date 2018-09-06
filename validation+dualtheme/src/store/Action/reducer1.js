@@ -1,7 +1,13 @@
 const initialState={
+  scroll:true,
+  page:{
+          list: ['a','b','c','d','e','f','g','h','i','j','k'],
+          currentpage: 1,
+          perpage: 3
+  },
 
   login:{
-    
+
       uname: {
             elementType:'input',
             elementConfig:{type:'text',placeholder:'User Name'},
@@ -67,8 +73,20 @@ const reducer1 = (state=initialState,action) =>{
       }
       else{
         data.tabledata=action.data.data.users;
+        data.page.list=action.data.data.users;
+        console.log(data.page.list);
+
         return{...data}
       }
+  }
+
+
+
+  if(action.type==='PAGEHANDLER'){
+    var data={...state};
+
+      data.page.currentpage=action.pagenum;
+      return{...data}
   }
 
   if(action.type==='LOGOUTHANDLER'){
