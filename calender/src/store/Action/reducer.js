@@ -1,11 +1,29 @@
 const initialState={
-
+  up:true,
   date:null,
   day:null,
   month:null,
   year:null,
 
+  scheduledata:{
+    at:null,
+    main:null,
+    time1:null,
+    time2:null,
+    date1:null,
+    date2:null,
+    msg:null,
+    time3:null,
+  },
+
   select:'y',
+
+  modalPrivacy:"Public",
+  modalSlot:"Single slot",
+  choose:1,
+
+modal:[],
+
 
 
 
@@ -32,6 +50,36 @@ const reducer1 = (state=initialState,action) =>{
 
     var data={...state};
     data.select=action.x;
+
+      return{...data}
+
+  }
+
+  if(action.type==='SAVE'){
+
+
+    var data={...state};
+  const  x={
+    at:data.date,
+    date1:action.a,
+    date2:action.c,
+    time1:action.b,
+    time2:action.d,
+      main:action.e,
+      msg:null,
+      time3:null,
+}
+if(data.choose===2){
+          x.msg=action.a1;
+      }
+      else if(data.choose===3){
+          x.time3=action.a1;
+      }
+
+data.modal.push(x);
+
+
+
 
       return{...data}
 
@@ -69,6 +117,40 @@ if(action.type==='DAYSET'){
   return{...data}
 }
 
+
+
+if(action.type==='PRIVACY'){
+  var data={...state};
+
+  data.modalPrivacy=action.x;
+
+  return{...data}
+}
+
+if(action.type==='AFTERSCHEDULE'){
+  var data={...state};
+data.scheduledata=action.data;
+
+
+  return{...data}
+}
+
+
+if(action.type==='SLOT'){
+  var data={...state};
+
+  data.modalSlot=action.x;
+
+  return{...data}
+}
+
+if(action.type==='CHOOSE'){
+  var data={...state};
+
+  data.choose=action.x;
+
+  return{...data}
+}
 
   if(action.type==='PREV'){
 console.log('ddd');

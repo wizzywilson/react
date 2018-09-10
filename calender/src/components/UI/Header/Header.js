@@ -29,14 +29,20 @@ class Header extends Component{
                           <li><button onClick={this.props.prev} className="buton btn"><i className="fa fa-chevron-left"/></button></li>
                           <li><button onClick={this.props.nex} className="buton btn"><i className="fa fa-chevron-right"/></button></li>
                           <li><div className="year_month"><b>{this.props.year} / {moment(this.props.year+'/'+this.props.month+'/'+this.props.day, 'DD/MM/YYYY').format('MMMM')}</b></div></li>
-                          <li className="dropdown">
-                              <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Change<span className="caret"></span></a>
-                              <ul className="dropdown-menu">
+
+                          <li className="dropdown" id="dropp">
+                              <a  id="vv" href="#" className="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{this.props.sel==='y'?'Year':'Month'}<span className="caret"></span></a>
+                              <ul  className="dropdown-menu">
                                 <li><a onClick={()=>this.props.select('y')} >YEAR</a></li>
                                 <li role="separator" className="divider"></li>
                                 <li><a onClick={()=>this.props.select('m')} >MONTH</a></li>
                              </ul>
                           </li>
+
+                          <li className="lisp"  ><a onClick={()=>this.props.select('y')} >Year</a></li>
+                          <li className="lisp"  ><a onClick={()=>this.props.select('m')} >Month</a></li>
+
+
                       </ul>
                   </div>
               </div>

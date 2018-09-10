@@ -6,22 +6,64 @@ import classes from './Calender.css'
 var moment = require('moment');
 class Calender extends Component{
 allrows=[];
+dateIndex={};
+modalDates=[];
+
 componentWillUpdate = () =>{
 this.allrows=[];
+this.dateIndex={};
+
+this.modalDates=this.props.modal.map(m=>m.at);
+
+let unique_array = Array.from(new Set(this.modalDates))
+
+this.modalDates=unique_array;
+
 
 }
 
+componentDidUpdate = () =>{
+console.log(this.props.state);
+
+
+}
+
+componentWillReceiveProps(nextProps) {
+
+      if(nextProps.state.scheduledata!==this.props.state.scheduledata){
+  document.getElementById('M1').click();
+      }
+   }
+
+
+// this.allrows.map((r,index)=>(q.includes(r)?p[r]=index:null))
+// console.log(p);
+// }
+
+afterSchedule = (data,e) =>{
+ this.props.afterSchedule(data);
+ if(this.props.state.scheduledata===data){
+     document.getElementById('M1').click();
+ }
+
+
+
+
+if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
+// now this part stops the click from propagating
+   // window.event.stopPropagation();
+}
 
 schedule = (index) =>{
 
 this.props.daySet(this.allrows[index])
 document.getElementById('buton').click();
-
-
 }
 
   render(){
-    console.log(this.props.day);
+    console.log(this.props.state);
 var a=moment([this.props.year, this.props.month - 1]).startOf('month').day('sunday');
 var b=moment([this.props.year, this.props.month - 1]).endOf('month').day('saturday');
 console.log(b.diff(a, 'days')+1);
@@ -39,13 +81,16 @@ for(var i=1;i<=7;i++){
       firstRows.push({
         val:a.format('D'),
         cl:null,
+        day:a.format('L')
       });
 this.allrows.push(a.format('L'));
   }
   else{
     firstRows.push({
       val:a.format('D'),
-      cl:"dim"
+      cl:"dim",
+      day:a.format('L')
+
     });
 
     this.allrows.push(a.format('L'));
@@ -77,6 +122,7 @@ if(a.format('M')==this.props.month){
     rows.push({
       val:a.format('D'),
       cl:null,
+      day:a.format('L')
     });
     this.allrows.push(a.format('L'));
 
@@ -84,10 +130,10 @@ if(a.format('M')==this.props.month){
 else{
   rows.push({
     val:a.format('D'),
-    cl:"dim"
+    cl:"dim",
+    day:a.format('L')
   });
   this.allrows.push(a.format('L'));
-
 }
 
 if(a.format('D')==1){
@@ -97,6 +143,7 @@ else{
   rows[rows.length-1].mon=null;
 }
 
+
 a.add(1, 'day');
 i++;
 
@@ -105,6 +152,7 @@ if(a.format('M')==this.props.month){
     rows.push({
       val:a.format('D'),
       cl:null,
+      day:a.format('L')
     });
     this.allrows.push(a.format('L'));
 
@@ -112,7 +160,8 @@ if(a.format('M')==this.props.month){
 else{
   rows.push({
     val:a.format('D'),
-    cl:"dim"
+    cl:"dim",
+    day:a.format('L')
   });
   this.allrows.push(a.format('L'));
 
@@ -128,9 +177,29 @@ else{
 lastRows.push(rows);
 console.log(firstRows);
 console.log(lastRows);
-console.log(this.allrows);
+
+this.props.modal.map((m,index)=>{
+  if(this.allrows.includes(m.at)){
+    if(this.dateIndex[m.at]==null){
+        this.dateIndex[m.at]=[index];
+        console.log('dd');
+    }
+    else{
+      console.log('ss');
+      this.dateIndex[m.at]=[...this.dateIndex[m.at],index];
+    }
 
 
+  }
+    return 1;
+}
+
+
+)
+// this.props.modal.map((m,index)=>(this.allrows.includes(m.at)?(this.dateIndex[m.at]?(this.dateIndex[m.at]=[...this.dateIndex[m.at],index]):this.dateIndex[m.at]=index):null))
+
+
+console.log(this.dateIndex);
 
 
     return(
@@ -139,13 +208,13 @@ console.log(this.allrows);
       <thead >
 
       <tr >
-        <td className=" dim">Sun</td>
-        <td className=" dim">Mon</td>
-        <td className=" dim">Tue</td>
-        <td className=" dim">Wed</td>
-        <td className=" dim">Thu</td>
-        <td className=" dim">Fri</td>
-        <td className=" dim">Sat</td>
+        <td className=" dim wd">  Sun</td>
+        <td className=" dim wd">  Mon</td>
+        <td className=" dim wd">Tue</td>
+        <td className=" dim wd">Wed</td>
+        <td className=" dim wd">Thu</td>
+        <td className=" dim wd">Fri</td>
+        <td className=" dim wd">Sat</td>
 
 
       </tr>
@@ -155,7 +224,16 @@ console.log(this.allrows);
 {firstRows.map((data,index)=>(
 
 
-                  <td key={index} onClick={()=>this.schedule(index)} id="row" className="firstrow"><span id="rowspan" className={data.cl}>{data.mon}  {data.val}</span></td>
+                  // <td key={index} onClick={()=>this.schedule(index)} id="row" className="firstrow"><span id="rowspan" className={data.cl}>{data.mon}  {data.val}</span><div className="reminder">{this.modalDates.map(d=>d==data.day?<div onClick={(e)=>this.afterSchedule(this.props.modal[this.dateIndex[data.day]],e)} className="rChild">{this.props.modal[this.dateIndex[data.day]].main} </div>:null)}</div></td>
+
+                  // <td key={index} onClick={()=>this.schedule(index)} id="row" className="firstrow"><span id="rowspan" className={data.cl}>{data.mon}  {data.val}</span>
+                  // <div className="reminder">{this.modalDates.map(d=>d==data.day?(<div className="rChild">{this.dateIndex[data.day]}</div>):null)}</div></td>
+
+
+                  <td key={index} onClick={()=>this.schedule(index)} id="row" className="firstrow"><span id="rowspan" className={data.cl}>{data.mon}  {data.val}</span>
+                  {this.modalDates.map(d=>d==data.day?(<div  className="reminder">{this.dateIndex[data.day].map(val=><div onClick={(e)=>this.afterSchedule(this.props.modal[val],e)} className="rChild">{this.props.modal[val].main}</div>)}</div>):null)}</td>
+
+
 
                 ))}
 </tr>
@@ -165,7 +243,11 @@ console.log(this.allrows);
 
       {lastRows.map((rows,index1)=>(
         <tr>
-          {rows.map((data,index)=>(<td key={index+7} onClick={()=>this.schedule(index+(7*index1+7))} id="row"><span  id="rowspan" className={data.cl}>{data.mon}  {data.val}</span></td>))}
+          {rows.map((data,index)=>(<td key={index+7} onClick={()=>this.schedule(index+(7*index1+7))} id="row"><span  id="rowspan" className={data.cl}>{data.mon}  {data.val}</span>
+
+    {this.modalDates.map(d=>d==data.day?(<div className="reminder">{this.dateIndex[data.day].map(val=><div onClick={(e)=>this.afterSchedule(this.props.modal[val],e)} className="rChild">{this.props.modal[val].main}</div>)}</div>):null)}</td>
+
+  ))}
         </tr>
       ))}
 
@@ -176,22 +258,29 @@ console.log(this.allrows);
       </Aux>
     );
   }
+
 }
 
 
 
 const mapStateToProps = (state) =>{
   return({
+    state:state,
+    modal:state.modal,
     month:state.month,
     day:state.day,
     year:state.year,
     date:state.date,
+    up:state.up,
   });
 }
 
 const mapDispatchToProps = (dispatch) =>{
   return({
     daySet:(day)=>dispatch({type:'DAYSET',day:day}),
+    afterSchedule:(data)=>dispatch({type:'AFTERSCHEDULE',data:data}),
+
+
   });
 }
 

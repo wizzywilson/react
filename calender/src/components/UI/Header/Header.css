@@ -5,10 +5,19 @@
 
 }
 
+.lisp{
+  display: none !important;
+}
+
+
 .buton:hover{
 background-color: #ddd;
 }
 
+
+.sd{
+  color:blue;
+}
 
 .year_month{
 margin-top: 12px;
@@ -30,7 +39,9 @@ color: #777777;
   margin-right: -15px !important;
 }
 
-.navbar-right {
+.navbar-right {.lisp{
+  display: none !important;
+}
   float: right!important;
 }
 
@@ -69,4 +80,21 @@ color: #777777;
 
 .drop{
   font-size: 100px;
+}
+
+
+@media only screen and (max-width: 810px) {
+  #dropp{
+    display: none;
+  }
+  .lisp{
+    display: block !important;
+  }
+
+
+
+}
+
+#vv{
+  margin-top: 2px;
 }

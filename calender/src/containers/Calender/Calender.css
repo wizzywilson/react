@@ -7,18 +7,43 @@ html,body,table
 }
 
 .weekdays{
-  border-bottom: 0px !important;;
+  border-bottom: 0px !important;
+}
 
+.reminder{
+  position: absolute;
+  width: 100%;
+  top:40px;
+  font-size: 12px;
 
+  overflow: auto;
+  height: 68%;
 
 }
+
+.rChild{
+
+margin-bottom: 5px;
+background-color: #3b9be4;
+padding-left: 25px;
+border-radius: 5%;
+color: white;
+font-weight: bold;
+cursor: pointer;
+}
+
+
 
 .dim{
-  color: #767676;
+  color: #858585;
+
 }
 
+
+
 .firstrow{
-  border-top: white !important;;
+  border-top: white !important;
+
 
 }
 
@@ -61,8 +86,18 @@ th,td{
 
 #rowspan{
   position: absolute;
-  top:0px;
+  top:8px;
+  left: 15px;
+}
+
+#rowspan2{
+  top:0;
+  left:0;
 }
 thead > tr > td {
 
+padding-top: 7px;
+padding-left: 7px;
+
+height: 7px;;
 }

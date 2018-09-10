@@ -1,0 +1,47 @@
+#M1{
+  display: none;
+}
+
+.aux{
+  margin-top: 150px;
+}
+
+#head{
+  width:100%;
+  background-color:#3b9be4;
+color:white;
+  height:120px;
+  text-align: center;
+position: relative;
+}
+
+.headtop{
+  font-size: 19px;
+  margin-right: 16px;
+  margin-left: 16px;
+
+
+
+}
+.headtop :hover{
+  color: white;
+}
+.f{
+  font-size: 17px;
+}
+
+.g{
+margin-left: 15px;
+}
+
+.h{
+  margin-left: 2px;
+}
+
+
+#headin{
+  position: absolute;
+  bottom: 20px;
+  font-size: 28px;
+  left:40px;
+}
