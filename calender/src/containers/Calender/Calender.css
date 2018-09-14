@@ -1,16 +1,18 @@
 html,body,table
 {
-    height: 100%;
-    font-size: 18px;
-    color: #000000;
+  height: 100%;
+  font-size: 18px;
+  color: #000000;
 
 }
 
-.weekdays{
+.weekdays
+{
   border-bottom: 0px !important;
 }
 
-.reminder{
+.reminder
+{
   position: absolute;
   width: 100%;
   top:40px;
@@ -21,62 +23,63 @@ html,body,table
 
 }
 
-.rChild{
-
-margin-bottom: 5px;
-background-color: #3b9be4;
-padding-left: 25px;
-border-radius: 5%;
-color: white;
-font-weight: bold;
-cursor: pointer;
+.rChild
+{
+  margin-bottom: 5px;
+  background-color: #3b9be4;
+  padding-left: 25px;
+  border-radius: 5%;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 
 
-.dim{
+.dim
+{
   color: #858585;
-
 }
 
 
 
-.firstrow{
+.firstrow
+{
   border-top: white !important;
-
-
 }
 
-table{
+table
+{
   margin: auto;
   width: 100%;
   height: 100%;
   position: absolute;
-   top: 102px;
-    bottom: 0;
-     left: 0;
-      right: 0;
+  top: 102px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-table, th, td {
-
-    border: 1px solid #dddddd;
-    border-collapse:collapse;
-
-    text-align: left;
+table, th, td
+{
+  border: 1px solid #dddddd;
+  border-collapse:collapse;
+  text-align: left;
 }
 
-th,td{
+th,td
+{
   border-bottom: white;
   width:14.2%;
-  height: 300px%;
 }
 
 
-@media (max-width: 790px) {
-    table{
-      top:111px;
-    }
+@media (max-width: 790px)
+{
+  table
+  {
+    top:111px;
+  }
 }
 
 #row{
@@ -84,20 +87,22 @@ th,td{
 
 }
 
-#rowspan{
+#rowspan
+{
   position: absolute;
   top:8px;
   left: 15px;
 }
 
-#rowspan2{
+#rowspan2
+{
   top:0;
   left:0;
 }
-thead > tr > td {
 
-padding-top: 7px;
-padding-left: 7px;
-
-height: 7px;;
+thead > tr > td
+{
+  padding-top: 7px;
+  padding-left: 7px;
+  height: 7px;;
 }

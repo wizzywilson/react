@@ -2,7 +2,6 @@
   background: transparent;
   border-radius: 50%;
   margin-top: 10px;
-
 }
 
 .lisp{
@@ -14,22 +13,24 @@
 background-color: #ddd;
 }
 
+.buton :focus{
+  outline: null;
+}
+
 
 .sd{
   color:blue;
 }
 
 .year_month{
-margin-top: 12px;
+  margin-top: 12px;
   font-size: 20px;
-color: #777777;
+  color: #777777;
 }
 
 
 .d{
-
-    margin-left: 450px;
-
+  margin-left: 450px;
 }
 .navbar-nav>li, .navbar-nav {
   float: left !important;
@@ -39,10 +40,12 @@ color: #777777;
   margin-right: -15px !important;
 }
 
-.navbar-right {.lisp{
-  display: none !important;
-}
+.navbar-right {
   float: right!important;
+}
+
+.lisp{
+  display: none !important;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -74,7 +77,6 @@ color: #777777;
 
   .year_month{
     margin-top: 5px;
-
   }
 }
 
@@ -90,11 +92,10 @@ color: #777777;
   .lisp{
     display: block !important;
   }
-
-
-
+  
 }
 
 #vv{
   margin-top: 2px;
 }
+

@@ -6,21 +6,17 @@ import Modal from '../../components/UI/Modal/Modal';
 import M1 from '../../components/UI/M1/M1';
 
 
-import classes from './Layout.css'
+import  './Layout.css'
 
 class Layout extends Component{
 
   render(){
     return(
       <Aux>
-
-<Header />
-
-
-<Modal />
-<Calender/>
-<M1 />
-
+        <Header />
+        <Modal />
+        <Calender/>
+        <M1 />
       </Aux>
     );
   }

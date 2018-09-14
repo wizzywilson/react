@@ -1,13 +1,10 @@
 #buton{
   display: none;
 }
- #myModal{
+
+#myModal{
    margin-top: 180px;
-
-
- }
-
-
+}
 
 #tex{
    margin-top:24px;
@@ -15,7 +12,7 @@
    font-size: 24px;
    width:80%;
   height: 28px;
- }
+}
 
 .butonSet{
   margin-top: 7px;
@@ -52,14 +49,11 @@ div > i{
     margin-left: 0px;
     margin-right: 0px;
     border: none;
-
 }
 
 .tim{
-
   font-size: 15px;
   border: none;
-
 }
 
 .row{
@@ -85,7 +79,7 @@ div > i{
 }
 
 
-@media  (max-width: 500px) {
+@media (max-width: 500px){
   #decline{
     width: 250px;
   }
@@ -93,19 +87,18 @@ div > i{
   .modalbtn{
     margin-bottom: 5px;
   }
-
 }
 
-@media  (max-width: 580px) {
-.Ip{
-  width: 90px;
-}
-.f{
-  padding: 0px;
-}
+@media (max-width: 580px) {
+  .Ip{
+    width: 90px;
+  }
+  .f{
+    padding: 0px;
+  }
 }
 
-@media  (max-width: 430px) {
+@media (max-width: 430px){
   .Ip{
     width: 68px;
   }
@@ -118,26 +111,23 @@ div > i{
 }
 
 
-@media  (max-width: 650px) {
+@media (max-width: 650px){
   #lt{
     margin-left: 50px;
   }
-
 }
 
-@media  (max-width: 480px) {
+@media (max-width: 480px) {
   #lt{
     margin-left: 80px;
   }
-
 }
 
 
 #save{
   padding-left: 40px;
   padding-right: 40px;
-background-color: #4285f4;
-
+  background-color: #4285f4;
   display: flex;
   margin-left: auto;
 }

@@ -11,17 +11,14 @@ class Header extends Component{
 
   }
 
-
-
   render(){
-
 
     return(
       <Aux>
             <nav className="navbar navbar-default">
               <div>
                     <div className="logo">
-                      <a className="navbar-brand" href="#">Calender</a>
+                      <a className="navbar-brand" >Calender</a>
                     </div>
 
                     <div className="d">
@@ -31,7 +28,7 @@ class Header extends Component{
                           <li><div className="year_month"><b>{this.props.year} / {moment(this.props.year+'/'+this.props.month+'/'+this.props.day, 'DD/MM/YYYY').format('MMMM')}</b></div></li>
 
                           <li className="dropdown" id="dropp">
-                              <a  id="vv" href="#" className="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{this.props.sel==='y'?'Year':'Month'}<span className="caret"></span></a>
+                              <a  id="vv"  className="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{this.props.sel==='y'?'Year':'Month'}<span className="caret"></span></a>
                               <ul  className="dropdown-menu">
                                 <li><a onClick={()=>this.props.select('y')} >YEAR</a></li>
                                 <li role="separator" className="divider"></li>
@@ -39,14 +36,14 @@ class Header extends Component{
                              </ul>
                           </li>
 
-                          <li className="lisp"  ><a onClick={()=>this.props.select('y')} >Year</a></li>
-                          <li className="lisp"  ><a onClick={()=>this.props.select('m')} >Month</a></li>
+                          <li className="lisp" name='name' ><a onClick={()=>this.props.select('y')} >Year</a></li>
+                          <li className="lisp" name='name' ><a onClick={()=>this.props.select('m')} >Month</a></li>
 
 
-                      </ul>
-                  </div>
+                        </ul>
+                    </div>
               </div>
-          </nav>
+            </nav>
       </Aux>
     )
   }
@@ -68,7 +65,6 @@ const mapDispatchToProps = (dispatch) =>{
       select:(x)=>dispatch({type:'SELECT',x:x}),
       nex:()=>dispatch({type:'NEXT'}),
       prev:()=>dispatch({type:'PREV'}),
-
   });
 }
 

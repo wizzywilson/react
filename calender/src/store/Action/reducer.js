@@ -4,6 +4,11 @@ const initialState={
   day:null,
   month:null,
   year:null,
+  modalPrivacy:"Public",
+  modalSlot:"Single slot",
+  choose:1,
+  modal:[],
+  select:'y',
 
   scheduledata:{
     at:null,
@@ -15,147 +20,123 @@ const initialState={
     msg:null,
     time3:null,
   },
-
-  select:'y',
-
-  modalPrivacy:"Public",
-  modalSlot:"Single slot",
-  choose:1,
-
-modal:[],
-
-
-
-
-
 }
 
 const reducer1 = (state=initialState,action) =>{
 
   if(action.type==='DATE'){
 
-
-    var data={...state};
+    let data={...state};
     data.day=action.date.getDate();
     data.month=action.date.getMonth();
     data.year=action.date.getFullYear();
     data.fulldate=action.date;
-
-      return{...data}
-
+    return{...data}
   }
 
   if(action.type==='SELECT'){
 
-
-    var data={...state};
+    let data={...state};
     data.select=action.x;
+    return{...data}
+  }
 
-      return{...data}
+  if(action.type==='REMOVE'){
+
+    let data={...state};
+    data.modal.map((a,index)=>(a===action.remove)?data.modal.splice(index, 1):null);
+    return{...data}
 
   }
 
   if(action.type==='SAVE'){
 
+    let data={...state};
 
-    var data={...state};
-  const  x={
-    at:data.date,
-    date1:action.a,
-    date2:action.c,
-    time1:action.b,
-    time2:action.d,
+    const  x={
+      at:data.date,
+      date1:action.a,
+      date2:action.c,
+      time1:action.b,
+      time2:action.d,
       main:action.e,
       msg:null,
       time3:null,
-}
-if(data.choose===2){
-          x.msg=action.a1;
-      }
-      else if(data.choose===3){
-          x.time3=action.a1;
-      }
+    }
 
-data.modal.push(x);
+    if(data.choose===2){
+        x.msg=action.a1;
+    }
+    else if(data.choose===3){
+        x.time3=action.a1;
+    }
 
-
-
-
-      return{...data}
-
+    data.modal.push(x);
+    return{...data}
   }
 
   if(action.type==='NEXT'){
 
-
-    var data={...state};
+    let data={...state};
     if(data.select==='y'){
       data.year=data.year+1;
-
-
-
     }
     else if(data.select==='m'){
       data.month=data.month+1;
       if(data.month>12){
-        data.month=1;
-        data.year+=1;
+          data.month=1;
+          data.year+=1;
       }
-
-
     }
-
-return{...data}
-
+    return{...data}
   }
 
 if(action.type==='DAYSET'){
-  var data={...state};
 
+  let data={...state};
   data.date=action.day;
-
   return{...data}
+
 }
 
 
 
 if(action.type==='PRIVACY'){
-  var data={...state};
 
+  let data={...state};
   data.modalPrivacy=action.x;
-
   return{...data}
+
 }
 
 if(action.type==='AFTERSCHEDULE'){
-  var data={...state};
-data.scheduledata=action.data;
 
-
+  let data={...state};
+  data.scheduledata=action.data;
   return{...data}
+
 }
 
 
 if(action.type==='SLOT'){
-  var data={...state};
 
+  let data={...state};
   data.modalSlot=action.x;
-
   return{...data}
+
 }
 
 if(action.type==='CHOOSE'){
-  var data={...state};
 
+  let data={...state};
   data.choose=action.x;
-
   return{...data}
+
 }
 
   if(action.type==='PREV'){
-console.log('ddd');
 
-    var data={...state};
+    let data={...state};
     if(data.select==='y'){
       data.year=data.year-1;
     }
@@ -167,7 +148,7 @@ console.log('ddd');
       }
     }
 
-      return{...data}
+    return{...data}
 
   }
 
